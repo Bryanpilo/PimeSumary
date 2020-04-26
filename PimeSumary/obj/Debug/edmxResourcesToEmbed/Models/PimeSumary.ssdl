@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PimeSumaryModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BillingType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TYPE" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="BillingTypeUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSumaryPime" Type="int" Nullable="false" />
+    <Property Name="IdBillingType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdSumaryPime" Type="int" Nullable="false" />
+    <Property Name="NameProduct" Type="varchar" MaxLength="50" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="SumaryPime">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Email" Type="varchar" MaxLength="255" />
+    <Property Name="Phone" Type="varchar" MaxLength="255" />
+    <Property Name="Address" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <Association Name="FK__BillingTy__IdBil__33D4B598">
+    <End Role="BillingType" Type="Self.BillingType" Multiplicity="1" />
+    <End Role="BillingTypeUser" Type="Self.BillingTypeUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BillingType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BillingTypeUser">
+        <PropertyRef Name="IdBillingType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillingTy__IdSum__32E0915F">
+    <End Role="SumaryPime" Type="Self.SumaryPime" Multiplicity="1" />
+    <End Role="BillingTypeUser" Type="Self.BillingTypeUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SumaryPime">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BillingTypeUser">
+        <PropertyRef Name="IdSumaryPime" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__IdSumar__300424B4">
+    <End Role="SumaryPime" Type="Self.SumaryPime" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SumaryPime">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="IdSumaryPime" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PimeSumaryModelStoreContainer">
+    <EntitySet Name="BillingType" EntityType="Self.BillingType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BillingTypeUser" EntityType="Self.BillingTypeUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SumaryPime" EntityType="Self.SumaryPime" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__BillingTy__IdBil__33D4B598" Association="Self.FK__BillingTy__IdBil__33D4B598">
+      <End Role="BillingType" EntitySet="BillingType" />
+      <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillingTy__IdSum__32E0915F" Association="Self.FK__BillingTy__IdSum__32E0915F">
+      <End Role="SumaryPime" EntitySet="SumaryPime" />
+      <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__IdSumar__300424B4" Association="Self.FK__Product__IdSumar__300424B4">
+      <End Role="SumaryPime" EntitySet="SumaryPime" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
