@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="470cbe19959f46b0a103a06d3a8e0bb5" Name="Diagram1">
-        <EntityTypeShape EntityType="PimeSumaryModel.BillingType" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="PimeSumaryModel.BillingTypeUser" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="PimeSumaryModel.Product" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="PimeSumaryModel.SumaryPime" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <AssociationConnector Association="PimeSumaryModel.FK__BillingTy__IdBil__33D4B598" ManuallyRouted="false" />
-        <AssociationConnector Association="PimeSumaryModel.FK__BillingTy__IdSum__32E0915F" ManuallyRouted="false" />
-        <AssociationConnector Association="PimeSumaryModel.FK__Product__IdSumar__300424B4" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PimeSumaryModel.BillingType" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="PimeSumaryModel.BillingTypeUser" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="PimeSumaryModel.Product" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="PimeSumaryModel.SumaryPime" Width="1.5" PointX="0.75" PointY="3.375" />
+        <AssociationConnector Association="PimeSumaryModel.FK__BillingTy__IdBil__300424B4" />
+        <AssociationConnector Association="PimeSumaryModel.FK__BillingTy__IdSum__2F10007B" />
+        <AssociationConnector Association="PimeSumaryModel.FK__Product__IdSumar__267ABA7A" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

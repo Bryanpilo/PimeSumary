@@ -5,10 +5,23 @@ using System.Web;
 
 namespace PimeSumary.Models
 {
-    public class fullSumary
+    public class FullSumary
     {
-        public Product Product;
-        public SumaryPime sumaryPime;
-        public BillingTypeUser BillingTypeUser;
+
+        public string Name { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
+
+        public string Address { get; set; }
+
+        public string NameProduct { get; set; }
+
+        public Nullable<decimal> UnitPrice { get; set; }
+
+        public int IdBillingType { get; set; }
+
+        public string Reference { get; set; }
     }
 }

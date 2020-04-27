@@ -4,38 +4,39 @@
     <EntitySetMapping Name="BillingType">
       <EntityTypeMapping TypeName="PimeSumaryModel.BillingType">
         <MappingFragment StoreEntitySet="BillingType">
-          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BillingTypeUser">
       <EntityTypeMapping TypeName="PimeSumaryModel.BillingTypeUser">
         <MappingFragment StoreEntitySet="BillingTypeUser">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdSumaryPime" ColumnName="IdSumaryPime" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
           <ScalarProperty Name="IdBillingType" ColumnName="IdBillingType" />
+          <ScalarProperty Name="IdSumaryPime" ColumnName="IdSumaryPime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="PimeSumaryModel.Product">
         <MappingFragment StoreEntitySet="Product">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="IdSumaryPime" ColumnName="IdSumaryPime" />
-          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
           <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="NameProduct" ColumnName="NameProduct" />
+          <ScalarProperty Name="IdSumaryPime" ColumnName="IdSumaryPime" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SumaryPime">
       <EntityTypeMapping TypeName="PimeSumaryModel.SumaryPime">
         <MappingFragment StoreEntitySet="SumaryPime">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

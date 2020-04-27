@@ -1,3 +1,5 @@
+CREATE DATABASE  PimeSumary
+GO
 USE PimeSumary
 GO
 CREATE TABLE SumaryPime (
@@ -28,6 +30,7 @@ CREATE TABLE BillingTypeUser(
 	Id INT NOT NULL IDENTITY,
 	IdSumaryPime INT NOT NULL,
 	IdBillingType INT NOT NULL,
+	Reference VARCHAR(100),
 	PRIMARY KEY (Id),
 	FOREIGN KEY (IdSumaryPime) REFERENCES SumaryPime(Id),
 	FOREIGN KEY (IdBillingType) REFERENCES BillingType(Id)

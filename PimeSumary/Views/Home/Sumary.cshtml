@@ -1,177 +1,196 @@
-﻿@model PimeSumary.Models.fullSumary
-
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h2>Creación del formulaio</h2>
-            <p>
-                A continuación debera proporcionar la información solicitada e indicar siguiente una vez haya brindado la información en todos los campos solicitados.
-            </p>
+﻿@model PimeSumary.Models.FullSumary
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Creación del formulaio</h2>
+                <p>
+                    A continuación debera proporcionar la información solicitada e indicar siguiente una vez haya brindado la información en todos los campos solicitados.
+                </p>
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default">
-        <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body">
 
-            <div class="stepper">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active">
-                        <a class="persistant-disabled" href="#stepper-step-1" data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Step 1">
-                            <span class="round-tab">1</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a class="persistant-disabled" href="#stepper-step-2" data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Step 2">
-                            <span class="round-tab">2</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a class="persistant-disabled" href="#stepper-step-3" data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Step 3">
-                            <span class="round-tab">3</span>
-                        </a>
-                    </li>
-                    <li role="presentation" class="disabled">
-                        <a class="persistant-disabled" href="#stepper-step-4" data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Complete">
-                            <span class="round-tab">4</span>
-                        </a>
-                    </li>
-                </ul>
-                <form role="form">
-                    <div class="tab-content">
-                        <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
-                            <h3 class "h2">1. Digite la información de la empresa</h3>
+                <div class="stepper">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active">
+                            <a class="persistant-disabled" href="#stepper-step-1" data-toggle="tab" aria-controls="stepper-step-1" role="tab" title="Paso 1">
+                                <span class="round-tab">1</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" href="#stepper-step-2" data-toggle="tab" aria-controls="stepper-step-2" role="tab" title="Paso 2">
+                                <span class="round-tab">2</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" href="#stepper-step-3" data-toggle="tab" aria-controls="stepper-step-3" role="tab" title="Paso 3">
+                                <span class="round-tab">3</span>
+                            </a>
+                        </li>
+                        <li role="presentation" class="disabled">
+                            <a class="persistant-disabled" href="#stepper-step-4" data-toggle="tab" aria-controls="stepper-step-4" role="tab" title="Completo">
+                                <span class="round-tab">4</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <form role="form">
+                        <div class="tab-content">
 
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
+                            <div class="tab-pane fade in active" role="tabpanel" id="stepper-step-1">
+                                <h3 class "h2">1. Digite la información de la empresa</h3>
 
                                 <div class="form-horizontal">
                                     <hr />
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.sumaryPime.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Name, "Nombre de la empresa", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.sumaryPime.Name, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.sumaryPime.Name, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.sumaryPime.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Email, "Correo electronico", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.sumaryPime.Email, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.sumaryPime.Email, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.sumaryPime.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Phone, "Telefono", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.sumaryPime.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.sumaryPime.Phone, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.sumaryPime.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.Address, "Dirección", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.sumaryPime.Address, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.sumaryPime.Address, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                 </div>
-                            }
 
-                            <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-primary next-step">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
-                            <h3 class "h2">2. Digite la información del producto que desea vender</h3>
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <a class="btn btn-primary next-step">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" role="tabpanel" id="stepper-step-2">
+                                <h3 class "h2">2. Digite la información del producto que desea vender</h3>
 
-
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
 
                                 <div class="form-horizontal">
                                     <hr />
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                 
+
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Product.NameProduct, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.NameProduct, "Producto", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Product.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Product.NameProduct, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.NameProduct, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.NameProduct, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.Product.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.UnitPrice, "Precio Unitario", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
-                                            @Html.EditorFor(model => model.Product.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
-                                            @Html.ValidationMessageFor(model => model.Product.UnitPrice, "", new { @class = "text-danger" })
+                                            @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.UnitPrice, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                 </div>
-                            }
 
-                            <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-default prev-step">Back</a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary next-step">Next</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
-                            <h3 class="hs">3. Digite los tipos de pago que desea tener disponibles</h3>
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <a class="btn btn-default prev-step">Atras</a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-primary next-step">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" role="tabpanel" id="stepper-step-3">
+                                <h3 class="hs">3. Digite los tipos de pago que desea tener disponibles</h3>
 
-                            @using (Html.BeginForm())
-                            {
-                                @Html.AntiForgeryToken()
+
 
                                 <div class="form-horizontal">
                                     <hr />
                                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                                     <div class="form-group">
-                                        @Html.LabelFor(model => model.BillingTypeUser.IdBillingType, "IdBillingType", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        @Html.LabelFor(model => model.IdBillingType, "Tipo de transacción", htmlAttributes: new { @class = "control-label col-md-2" })
                                         <div class="col-md-10">
                                             @Html.DropDownList("IdBillingType", null, htmlAttributes: new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(model => model.BillingTypeUser.IdBillingType, "", new { @class = "text-danger" })
+                                            @Html.ValidationMessageFor(model => model.IdBillingType, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Reference, "Número de referencia", htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.Reference, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Reference, "", new { @class = "text-danger" })
                                         </div>
                                     </div>
 
                                 </div>
-                            }
 
-                            <ul class="list-inline pull-right">
-                                <li>
-                                    <a class="btn btn-default prev-step">Back</a>
-                                </li>
-                                <li>
-                                    <a class="btn btn-primary next-step">Submit Payment</a>
-                                </li>
-                            </ul>
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <a class="btn btn-default prev-step">Atras</a>
+                                    </li>
+                                    <li>
+                                        <a class="btn btn-primary next-step">Siguiente</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
+                                <h3>4. Resumen del producto</h3>
+                                <p>
+                                    Para finalizar la creación de su plantilla, debe dar click a <b>Crear</b>, se le enviará un correo con la dirección
+                                    para poder acceder a su plantilla de pedidos. <br />
+                                </p>
+                                <p>
+                                    El precio de la plantilla es de <b>10$ mensuales</b>, los cuales deben ser depositados todos lo 15 de cada mes, al correo
+                                    <b>blabla@bla.com</b>
+                                </p>
+
+                                <p>
+                                    Recuerde que la plantilla estará activa una vez el pago este confirmado, el período de activación tiene un rango de 24 horas.
+                                    Se le notificará por correo, una vez la activación sea aplicada.
+                                </p>
+                                <ul class="list-inline pull-right">
+                                    <li>
+                                        <a class="btn btn-default prev-step">Atras</a>
+                                    </li>
+                                    <li>
+                                        <input type="submit" value="Crear" class="btn btn-default" />
+                                    </li>
+                                </ul>
+                            </div>
+
                         </div>
-                        <div class="tab-pane fade" role="tabpanel" id="stepper-step-4">
-                            <h3>4. Resumen del producto</h3>
-                            <p>Acá va el resumen miedo</p>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+
+
             </div>
-
-
         </div>
     </div>
-</div>
-
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

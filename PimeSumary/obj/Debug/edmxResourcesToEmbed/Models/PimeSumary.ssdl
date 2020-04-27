@@ -14,6 +14,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdSumaryPime" Type="int" Nullable="false" />
     <Property Name="IdBillingType" Type="int" Nullable="false" />
+    <Property Name="Reference" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -34,7 +35,7 @@
     <Property Name="Phone" Type="varchar" MaxLength="255" />
     <Property Name="Address" Type="varchar" MaxLength="255" />
   </EntityType>
-  <Association Name="FK__BillingTy__IdBil__33D4B598">
+  <Association Name="FK__BillingTy__IdBil__300424B4">
     <End Role="BillingType" Type="Self.BillingType" Multiplicity="1" />
     <End Role="BillingTypeUser" Type="Self.BillingTypeUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -46,7 +47,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillingTy__IdSum__32E0915F">
+  <Association Name="FK__BillingTy__IdSum__2F10007B">
     <End Role="SumaryPime" Type="Self.SumaryPime" Multiplicity="1" />
     <End Role="BillingTypeUser" Type="Self.BillingTypeUser" Multiplicity="*" />
     <ReferentialConstraint>
@@ -58,7 +59,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__IdSumar__300424B4">
+  <Association Name="FK__Product__IdSumar__267ABA7A">
     <End Role="SumaryPime" Type="Self.SumaryPime" Multiplicity="1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
     <ReferentialConstraint>
@@ -75,15 +76,15 @@
     <EntitySet Name="BillingTypeUser" EntityType="Self.BillingTypeUser" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SumaryPime" EntityType="Self.SumaryPime" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BillingTy__IdBil__33D4B598" Association="Self.FK__BillingTy__IdBil__33D4B598">
+    <AssociationSet Name="FK__BillingTy__IdBil__300424B4" Association="Self.FK__BillingTy__IdBil__300424B4">
       <End Role="BillingType" EntitySet="BillingType" />
       <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
     </AssociationSet>
-    <AssociationSet Name="FK__BillingTy__IdSum__32E0915F" Association="Self.FK__BillingTy__IdSum__32E0915F">
+    <AssociationSet Name="FK__BillingTy__IdSum__2F10007B" Association="Self.FK__BillingTy__IdSum__2F10007B">
       <End Role="SumaryPime" EntitySet="SumaryPime" />
       <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
     </AssociationSet>
-    <AssociationSet Name="FK__Product__IdSumar__300424B4" Association="Self.FK__Product__IdSumar__300424B4">
+    <AssociationSet Name="FK__Product__IdSumar__267ABA7A" Association="Self.FK__Product__IdSumar__267ABA7A">
       <End Role="SumaryPime" EntitySet="SumaryPime" />
       <End Role="Product" EntitySet="Product" />
     </AssociationSet>

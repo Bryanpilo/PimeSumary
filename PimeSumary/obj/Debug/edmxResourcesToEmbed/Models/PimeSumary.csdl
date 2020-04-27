@@ -1,12 +1,30 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="PimeSumaryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PimeSumaryEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BillingType" EntityType="PimeSumaryModel.BillingType" />
+    <EntitySet Name="BillingTypeUser" EntityType="PimeSumaryModel.BillingTypeUser" />
+    <EntitySet Name="Product" EntityType="PimeSumaryModel.Product" />
+    <EntitySet Name="SumaryPime" EntityType="PimeSumaryModel.SumaryPime" />
+    <AssociationSet Name="FK__BillingTy__IdBil__300424B4" Association="PimeSumaryModel.FK__BillingTy__IdBil__300424B4">
+      <End Role="BillingType" EntitySet="BillingType" />
+      <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillingTy__IdSum__2F10007B" Association="PimeSumaryModel.FK__BillingTy__IdSum__2F10007B">
+      <End Role="SumaryPime" EntitySet="SumaryPime" />
+      <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__IdSumar__267ABA7A" Association="PimeSumaryModel.FK__Product__IdSumar__267ABA7A">
+      <End Role="SumaryPime" EntitySet="SumaryPime" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
   <EntityType Name="BillingType">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="BillingTypeUser" Relationship="Self.FK__BillingTy__IdBil__33D4B598" FromRole="BillingType" ToRole="BillingTypeUser" />
+    <NavigationProperty Name="BillingTypeUser" Relationship="PimeSumaryModel.FK__BillingTy__IdBil__300424B4" FromRole="BillingType" ToRole="BillingTypeUser" />
   </EntityType>
   <EntityType Name="BillingTypeUser">
     <Key>
@@ -15,8 +33,9 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdSumaryPime" Type="Int32" Nullable="false" />
     <Property Name="IdBillingType" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="BillingType" Relationship="Self.FK__BillingTy__IdBil__33D4B598" FromRole="BillingTypeUser" ToRole="BillingType" />
-    <NavigationProperty Name="SumaryPime" Relationship="Self.FK__BillingTy__IdSum__32E0915F" FromRole="BillingTypeUser" ToRole="SumaryPime" />
+    <Property Name="Reference" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="BillingType" Relationship="PimeSumaryModel.FK__BillingTy__IdBil__300424B4" FromRole="BillingTypeUser" ToRole="BillingType" />
+    <NavigationProperty Name="SumaryPime" Relationship="PimeSumaryModel.FK__BillingTy__IdSum__2F10007B" FromRole="BillingTypeUser" ToRole="SumaryPime" />
   </EntityType>
   <EntityType Name="Product">
     <Key>
@@ -26,7 +45,7 @@
     <Property Name="IdSumaryPime" Type="Int32" Nullable="false" />
     <Property Name="NameProduct" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="0" />
-    <NavigationProperty Name="SumaryPime" Relationship="Self.FK__Product__IdSumar__300424B4" FromRole="Product" ToRole="SumaryPime" />
+    <NavigationProperty Name="SumaryPime" Relationship="PimeSumaryModel.FK__Product__IdSumar__267ABA7A" FromRole="Product" ToRole="SumaryPime" />
   </EntityType>
   <EntityType Name="SumaryPime">
     <Key>
@@ -37,12 +56,12 @@
     <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Phone" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
     <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="BillingTypeUser" Relationship="Self.FK__BillingTy__IdSum__32E0915F" FromRole="SumaryPime" ToRole="BillingTypeUser" />
-    <NavigationProperty Name="Product" Relationship="Self.FK__Product__IdSumar__300424B4" FromRole="SumaryPime" ToRole="Product" />
+    <NavigationProperty Name="BillingTypeUser" Relationship="PimeSumaryModel.FK__BillingTy__IdSum__2F10007B" FromRole="SumaryPime" ToRole="BillingTypeUser" />
+    <NavigationProperty Name="Product" Relationship="PimeSumaryModel.FK__Product__IdSumar__267ABA7A" FromRole="SumaryPime" ToRole="Product" />
   </EntityType>
-  <Association Name="FK__BillingTy__IdBil__33D4B598">
-    <End Role="BillingType" Type="Self.BillingType" Multiplicity="1" />
-    <End Role="BillingTypeUser" Type="Self.BillingTypeUser" Multiplicity="*" />
+  <Association Name="FK__BillingTy__IdBil__300424B4">
+    <End Type="PimeSumaryModel.BillingType" Role="BillingType" Multiplicity="1" />
+    <End Type="PimeSumaryModel.BillingTypeUser" Role="BillingTypeUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="BillingType">
         <PropertyRef Name="Id" />
@@ -52,9 +71,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__BillingTy__IdSum__32E0915F">
-    <End Role="SumaryPime" Type="Self.SumaryPime" Multiplicity="1" />
-    <End Role="BillingTypeUser" Type="Self.BillingTypeUser" Multiplicity="*" />
+  <Association Name="FK__BillingTy__IdSum__2F10007B">
+    <End Type="PimeSumaryModel.SumaryPime" Role="SumaryPime" Multiplicity="1" />
+    <End Type="PimeSumaryModel.BillingTypeUser" Role="BillingTypeUser" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SumaryPime">
         <PropertyRef Name="Id" />
@@ -64,9 +83,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Product__IdSumar__300424B4">
-    <End Role="SumaryPime" Type="Self.SumaryPime" Multiplicity="1" />
-    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+  <Association Name="FK__Product__IdSumar__267ABA7A">
+    <End Type="PimeSumaryModel.SumaryPime" Role="SumaryPime" Multiplicity="1" />
+    <End Type="PimeSumaryModel.Product" Role="Product" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SumaryPime">
         <PropertyRef Name="Id" />
@@ -76,22 +95,4 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="PimeSumaryEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="BillingType" EntityType="Self.BillingType" />
-    <EntitySet Name="BillingTypeUser" EntityType="Self.BillingTypeUser" />
-    <EntitySet Name="Product" EntityType="Self.Product" />
-    <EntitySet Name="SumaryPime" EntityType="Self.SumaryPime" />
-    <AssociationSet Name="FK__BillingTy__IdBil__33D4B598" Association="Self.FK__BillingTy__IdBil__33D4B598">
-      <End Role="BillingType" EntitySet="BillingType" />
-      <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
-    </AssociationSet>
-    <AssociationSet Name="FK__BillingTy__IdSum__32E0915F" Association="Self.FK__BillingTy__IdSum__32E0915F">
-      <End Role="SumaryPime" EntitySet="SumaryPime" />
-      <End Role="BillingTypeUser" EntitySet="BillingTypeUser" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Product__IdSumar__300424B4" Association="Self.FK__Product__IdSumar__300424B4">
-      <End Role="SumaryPime" EntitySet="SumaryPime" />
-      <End Role="Product" EntitySet="Product" />
-    </AssociationSet>
-  </EntityContainer>
 </Schema>
